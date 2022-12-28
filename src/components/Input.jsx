@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = ({ name, setName, password, setPassword }) => {
   return (
-    <div>
+    <>
       <input
         type="text"
         value={name}
@@ -13,7 +13,7 @@ const Input = ({ name, setName, password, setPassword }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 
 import Input from "./components/Input";
+import Button from "./components/Button";
 
 function App() {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ function App() {
         password={password}
         setPassword={setPassword}
       />
+      <Button text="Login" isActive={password === "252525"} />
     </div>
   );
 }
