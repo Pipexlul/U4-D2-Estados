@@ -8,6 +8,10 @@ import Button from "./components/Button";
 function App() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  const [nameBonus, setNameBonus] = useState("");
+  const [passwordBonus, setPasswordBonus] = useState("");
+
   const [error, setError] = useState("");
 
   const fields = [
@@ -15,7 +19,12 @@ function App() {
     { name: "password", value: password },
   ];
 
-  const validateFields = () => {
+  const fieldsBonus = [
+    { name: "nameBonus", value: nameBonus },
+    { name: "passwordBonus", value: passwordBonus },
+  ];
+
+  const validateFields = (fields) => {
     const invalidFields = [];
 
     for (const field of fields) {
@@ -42,7 +51,24 @@ function App() {
       <Button
         text="Login"
         isActive={password === "252525"}
-        onClick={validateFields}
+        onClick={(e) => {
+          validateFields(fields);
+        }}
+      />
+
+      <Input
+        name={nameBonus}
+        setName={setNameBonus}
+        password={passwordBonus}
+        setPassword={setPasswordBonus}
+      />
+      <Button
+        text="Login"
+        isActive={passwordBonus === "252525"}
+        isBonus={true}
+        onClick={(e) => {
+          validateFields(fieldsBonus);
+        }}
       />
     </div>
   );
