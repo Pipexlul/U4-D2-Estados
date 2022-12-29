@@ -1,0 +1,21 @@
+.form-container {
+  @apply my-0 mx-auto p-8;
+  max-width: 400px;
+}
+
+.form-label {
+  @apply font-semibold text-sm mb-2 uppercase;
+  color: rgba(85, 85, 85, 1);
+}
+
+.form-input {
+  @apply bg-clip-padding bg-white border-gray-300 rounded border-solid border block h-10 text-base leading-normal p-2 w-full;
+  color: rgba(85, 85, 85, 1);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(138, 148, 169, 0.25);
+  border-color: rgb(107, 232, 232);
+}

@@ -1,22 +1,39 @@
 import React from "react";
 
-const Input = ({ name, setName, password, setPassword }) => {
+const Input = ({
+  name,
+  setName,
+  password,
+  setPassword,
+  nameId,
+  passwordId,
+}) => {
   return (
     <>
-      <label htmlFor="nameField">Nombre</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        id="nameField"
-      />
-      <label htmlFor="passwordField">Contraseña</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        id="passwordField"
-      />
+      <div className="mb-6">
+        <label className="form-label" htmlFor={nameId}>
+          Nombre
+        </label>
+        <input
+          className="form-input"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          id={nameId}
+        />
+      </div>
+      <div className="mb-6">
+        <label className="form-label" htmlFor={passwordId}>
+          Contraseña
+        </label>
+        <input
+          className="form-input"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          id={passwordId}
+        />
+      </div>
     </>
   );
 };

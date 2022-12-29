@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Input from "./components/Input";
 import Button from "./components/Button";
+import Separator from "./components/Separator";
 
 function App() {
   const [name, setName] = useState("");
@@ -47,6 +48,8 @@ function App() {
         setName={setName}
         password={password}
         setPassword={setPassword}
+        nameId="name"
+        passwordId="password"
       />
       <Button
         text="Login"
@@ -56,11 +59,15 @@ function App() {
         }}
       />
 
+      <Separator />
+
       <Input
         name={nameBonus}
         setName={setNameBonus}
         password={passwordBonus}
         setPassword={setPasswordBonus}
+        nameId="nameBonus"
+        passwordId="passwordBonus"
       />
       <Button
         text="Login"
