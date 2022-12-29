@@ -44,7 +44,7 @@ function App() {
 
     // Special checks for Bonus Login
     if (fieldsToCheck === fieldsBonus && invalidFields.length === 0) {
-      const names = nameBonus.split(" ");
+      const names = nameBonus.trim().split(" ");
       if (names.length !== 2) {
         invalidFields.push({
           name: "Nombre (Login Bonus)",
