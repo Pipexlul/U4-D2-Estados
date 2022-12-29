@@ -6,6 +6,7 @@ import Input from "./components/Input";
 import Button from "./components/Button";
 import Separator from "./components/Separator";
 import Header from "./components/Header";
+import StatusDisplay from "./components/StatusDisplay";
 
 function App() {
   const [name, setName] = useState("");
@@ -14,19 +15,25 @@ function App() {
   const [nameBonus, setNameBonus] = useState("");
   const [passwordBonus, setPasswordBonus] = useState("");
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
+
+  const [firstLogin, setFirstLogin] = useState(false);
 
   const fields = [
-    { name: "name", value: name },
-    { name: "password", value: password },
+    { name: "Nombre (Login Requerido)", value: name },
+    { name: "Contraseña (Login Requerido)", value: password },
   ];
 
   const fieldsBonus = [
-    { name: "nameBonus", value: nameBonus },
-    { name: "passwordBonus", value: passwordBonus },
+    { name: "Nombre (Login Bonus)", value: nameBonus },
+    { name: "Contraseña (Login Bonus)", value: passwordBonus },
   ];
 
   const validateFields = (fields) => {
+    if (!firstLogin) {
+      setFirstLogin(true);
+    }
+
     const invalidFields = [];
 
     for (const field of fields) {
@@ -36,9 +43,9 @@ function App() {
     }
 
     if (invalidFields.length) {
-      return { isValid: false, invalidFields };
+      setError(invalidFields);
     } else {
-      return { isValid: true };
+      setError([]);
     }
   };
 
@@ -89,6 +96,8 @@ function App() {
           validateFields(fieldsBonus);
         }}
       />
+
+      <StatusDisplay hasTriedLogin={firstLogin} errors={error} />
     </div>
   );
 }
