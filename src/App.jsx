@@ -69,6 +69,8 @@ function App() {
       <Header
         title="Login Bonus"
         desc="Este login tiene el boton mostrandose todo el tiempo, pero, este no es clickeable si la condición no se cumple."
+        hints="Pistas: El boton se habilitara cuando hayan dos palabras en el campo nombre y cualquier combinacion de numeros en el campo contraseña.
+        Pero para que el login sea exitoso el campo nombre debe contener el nombre de la primera persona en ganar dos premios Nobel y el campo contraseña deber contener el año en que nació."
       />
 
       <Input

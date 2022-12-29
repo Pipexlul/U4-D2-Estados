@@ -20,6 +20,7 @@ const Input = ({
           value={name}
           onChange={(e) => setName(e.target.value)}
           id={nameId}
+          placeholder="Ingrese su nombre"
         />
       </div>
       <div className="mb-6">
@@ -32,6 +33,7 @@ const Input = ({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           id={passwordId}
+          placeholder="Ingrese su contraseña"
         />
       </div>
     </>
