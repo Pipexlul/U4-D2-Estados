@@ -5,6 +5,7 @@ import { useState } from "react";
 import Input from "./components/Input";
 import Button from "./components/Button";
 import Separator from "./components/Separator";
+import Header from "./components/Header";
 
 function App() {
   const [name, setName] = useState("");
@@ -43,6 +44,10 @@ function App() {
 
   return (
     <div className="App">
+      <Header
+        title="Login Requerido"
+        desc="Este login hace aparecer o desaparecer el botón correspondiente si el campo password equivale a 252525. Es basicamente lo que pide el desafio."
+      />
       <Input
         name={name}
         setName={setName}
@@ -60,6 +65,11 @@ function App() {
       />
 
       <Separator />
+
+      <Header
+        title="Login Bonus"
+        desc="Este login tiene el boton mostrandose todo el tiempo, pero, este no es clickeable si la condición no se cumple."
+      />
 
       <Input
         name={nameBonus}
