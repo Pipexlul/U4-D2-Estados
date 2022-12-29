@@ -29,16 +29,45 @@ function App() {
     { name: "Contraseña (Login Bonus)", value: passwordBonus },
   ];
 
-  const validateFields = (fields) => {
+  const validateFields = (fieldsToCheck) => {
     if (!firstLogin) {
       setFirstLogin(true);
     }
 
     const invalidFields = [];
 
-    for (const field of fields) {
+    for (const field of fieldsToCheck) {
       if (!field.value.trim()) {
         invalidFields.push({ name: field.name, message: "Campo está vacio" });
+      }
+    }
+
+    // Special checks for Bonus Login
+    if (fieldsToCheck === fieldsBonus && invalidFields.length === 0) {
+      const names = nameBonus.split(" ");
+      if (names.length !== 2) {
+        invalidFields.push({
+          name: "Nombre (Login Bonus)",
+          message:
+            "Nombre debe contener exactamente dos palabras (Nombre y Apellido)",
+        });
+      } else {
+        if (
+          names[0].toLowerCase() !== "marie" ||
+          names[1].toLowerCase() !== "curie"
+        ) {
+          invalidFields.push({
+            name: "Nombre (Login Bonus)",
+            message: "Nombre y/o Apellido incorrecto",
+          });
+        }
+
+        if (passwordBonus !== "1867") {
+          invalidFields.push({
+            name: "Contraseña (Login Bonus)",
+            message: "Año de nacimiento incorrecto",
+          });
+        }
       }
     }
 
@@ -76,8 +105,8 @@ function App() {
       <Header
         title="Login Bonus"
         desc="Este login tiene el boton mostrandose todo el tiempo, pero, este no es clickeable si la condición no se cumple."
-        hints="Pistas: El boton se habilitara cuando hayan dos palabras en el campo nombre y cualquier combinacion de numeros en el campo contraseña.
-        Pero para que el login sea exitoso el campo nombre debe contener el nombre de la primera persona en ganar dos premios Nobel y el campo contraseña deber contener el año en que nació."
+        hints="Pistas: El boton se habilitara cuando hayan dos palabras en el campo nombre y cualquier combinacion en el campo contraseña.
+        Pero para que el login sea exitoso el campo nombre debe contener el nombre y apellido de la primera persona en ganar dos premios Nobel y el campo contraseña deber contener el año en que nació."
       />
 
       <Input
@@ -90,7 +119,9 @@ function App() {
       />
       <Button
         text="Login"
-        isActive={passwordBonus === "252525"}
+        isActive={
+          nameBonus.trim().split(" ").length === 2 && passwordBonus.length > 0
+        }
         isBonus={true}
         onClick={(e) => {
           validateFields(fieldsBonus);
